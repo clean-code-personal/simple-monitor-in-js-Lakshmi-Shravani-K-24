@@ -27,3 +27,4 @@ function batteryIsOk(temperature, soc, chargeRate){
     return false;
     }
 }
+module.exports={batteryIsOk};
