@@ -1,4 +1,6 @@
+const {expect} = require('chai');
 const {TemperatureRange, SOCRange, ChargeRateRange}=require("./inputParameterRanges.js")
+
 //checks whether inputParameters are in range or not and specifies the type of breach that is low or high
 function checkBreach(inputParameter, value, min, max) {
     if (value < min) {
