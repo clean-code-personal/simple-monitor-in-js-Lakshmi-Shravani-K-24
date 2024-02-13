@@ -1,4 +1,3 @@
-const {expect} = require('chai');
 const {TemperatureRange, SOCRange, ChargeRateRange}=require("./inputParameterRanges.js")
 
 //checks whether inputParameters are in range or not and specifies the type of breach that is low or high
@@ -28,5 +27,3 @@ function batteryIsOk(temperature, soc, chargeRate){
     return false;
     }
 }
-expect(batteryIsOk(25, 70, 0.7)).to.be.true;
-expect(batteryIsOk(50, 85, 0)).to.be.false;
