@@ -18,3 +18,7 @@ jobs:
       
       - name: BMS monitor
         run: node bms-monitor.js
+
+      - name: Tests
+        run : npm test
+      
