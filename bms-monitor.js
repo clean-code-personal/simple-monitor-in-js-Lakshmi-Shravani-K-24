@@ -17,7 +17,9 @@ function batteryIsOk(temperature, soc, chargeRate){
     const temperatureResult=isInRange( "Temperature",temperature,TemperatureRange.min,TemperatureRange.max);
     const socResult=isInRange("soc", soc, SOCRange.min, SOCRange.max);
     const chargeRateResult=isInRange("chargeRate", chargeRate, ChargeRateRange.min, ChargeRateRange.max);
-    const finalResult=temperatureResult & socResult & chargeRateResult;
+    const results=[temperatureResult, socResult,chargeRateResult ];
+    const finalResult = results.reduce((acc, result) => acc && result, true);
+
     if(finalResult){
         console.log("***Battery is Ok***");
         return true;
