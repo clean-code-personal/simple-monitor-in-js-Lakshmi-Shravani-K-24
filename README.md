@@ -1,3 +1,6 @@
+#Extensions added
+1.Early warnings
+2.Support a language in addition to English
 # Programming Paradigms
 
 Electric Vehicles have BMS - Battery Management Systems
