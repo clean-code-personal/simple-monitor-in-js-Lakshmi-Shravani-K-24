@@ -37,4 +37,8 @@ function warningIndicator(inputParameter, value, inputParameterRange) {
     return { input: inputParameter, code: 5, warning: true };
   return { input: inputParameter, code: 6, warning: false };
 }
+
+//At any point of time with any values user can check if inputParameter is below or above threshold range using warning indicator function
+warningResult = warningIndicator("Temperature", 44, TemperatureRange);
+printMessage(warningResult);
 batteryMonitoring();
