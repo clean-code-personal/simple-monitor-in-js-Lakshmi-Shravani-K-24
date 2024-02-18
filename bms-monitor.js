@@ -2,42 +2,39 @@ const {
   TemperatureRange,
   SOCRange,
   ChargeRateRange,
+  inputParameterMap,
   messageHashMap,
   languageCode,
 } = require("./inputParameterRanges.js");
 
-//checks whether inputParameters are in range or not  and returns boolean value and also specifies the type of breach that is low or high and also checks threshold range
 function isInRange(inputParameter, value, inputParameterRange) {
   if (value < inputParameterRange.min) {
     return {
       input: inputParameter,
-      code: 1,
+      code: "low",
       normal: false,
     };
   } else if (value > inputParameterRange.max) {
     return {
       input: inputParameter,
-      code: 2,
+      code: "high",
       normal: false,
     };
   }
 
   return {
     input: inputParameter,
-    code: 3,
+    code: "normal",
     normal: true,
   };
 }
-
-//this function generates Message code and prints the message
 function printMessage(result) {
-  const code = result.code; //code determines nputParameter's state low or high or normal
-  const inputParameter = result.input;
-  const messageCode = "" + languageCode + inputParameter + code; //message is combination of language , inputParameter and code
-  let message = messageHashMap.get(messageCode);
-  console.log(message);
+  const inputParameterCode = languageCode + result.input;
+  const messageCode = languageCode + result.code; //message is combination of language and code
+  const inputParameter = inputParameterMap.get(inputParameterCode); // get the parameter
+  let message = messageHashMap.get(messageCode); // get the message
+  console.log(inputParameter + message);
 }
-
 function batteryIsOk(temperature, soc, chargeRate) {
   const temperatureResult = isInRange(
     "Temperature",
@@ -60,12 +57,12 @@ function batteryIsOk(temperature, soc, chargeRate) {
 
   const finalResult = results.reduce((acc, result) => acc && result, true);
   if (finalResult) {
-    printMessage({ input: "BatteryState", code: 7 });
+    printMessage({ input: "Battery", code: "Ok" });
     return true;
   } else {
-    printMessage({ input: "BatteryState", code: 8 });
+    printMessage({ input: "Battery", code: "NotOk" });
     return false;
   }
 }
-
+batteryIsOk(48, 40, 0.9);
 module.exports = { batteryIsOk, printMessage };
