@@ -1,5 +1,5 @@
 const assert = require('assert');
-const {batteryIsOk}= require('./bms-monitor.js');
+const {batteryIsOk}= require('../bms-monitor.js');
 
 describe('Battery Health Check', function() {
     it('should return true for acceptable parameters', function() {
