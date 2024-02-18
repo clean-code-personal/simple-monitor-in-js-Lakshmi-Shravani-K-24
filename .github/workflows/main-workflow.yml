@@ -19,9 +19,6 @@ jobs:
       - name: BMS monitor
         run: node bms-monitor.js
         
-      # - name: batteryMonitoring for warnings
-      #   run: node batteryMonitoring.js
-
       - name: Tests
-        run : npm test
+        run : npx mocha Tests
       
