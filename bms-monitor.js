@@ -6,7 +6,7 @@ const {
     messageHashMap,
     languageCode,
   } = require("./inputParameterRanges.js");
-const {isInRange, isInThresholdRange } = require("./rangeChecker.js");
+const {isInRange, isInThresholdRange } = require("./bms-rangeChecker.js");
   
 function printMessage(result) {
     const inputParameterCode = languageCode + result.input;
