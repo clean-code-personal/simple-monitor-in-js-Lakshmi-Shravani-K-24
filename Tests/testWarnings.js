@@ -1,4 +1,4 @@
-const {batteryWarningIndicator}= require("./bms-monitor.js");
+const {batteryWarningIndicator}= require("../bms-monitor.js");
 const assert = require('assert');
 describe('warningIndicator function', function() {
     it('should return true when all parameters are in threshold range ', function() {
